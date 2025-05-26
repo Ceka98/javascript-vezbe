@@ -1,77 +1,67 @@
-// ZADATAK 1                 PRVI PRIMER
-let brojac = 0;
-while (brojac < 25) {
-  console.log(brojac);
-  brojac += 2;
-}
-// DRUGI PRIMER
-let brojac1 = 0;
-while (brojac < 25) {
-  brojac++;
-  if (brojac % 2 === 0) {
-    console.log(brojac);
-  }
-}
+// ZADATAK 1
+
+const niz1 = ["Nikola", "Milan", "Mladen", "Vojin", "Darko", "Milica"];
+const niz2 = niz1.filter(function PrvoSLovoM(imaM) {
+  return imaM.includes("M");
+});
+console.log(niz2);
 
 // ZADATAK 2
 
-function getRandomLetter() {
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const numberOfLetters = alphabet.length;
-  const randomIndex = Math.floor(Math.random() * numberOfLetters);
-  return alphabet[randomIndex];
-}
-let rec = "";
-let slovo = getRandomLetter();
-while (slovo != "g") {
-  slovo = getRandomLetter();
-  rec += slovo;
-  // <-----    // OVO  JE BILO PROBLE
-}
-console.log(rec);
+const niz3 = [
+  {
+    id: 141596489,
+    ime: "Dragoslav",
+    datumPrijave: "2025-05-26T17:36:22.035",
+  },
+  {
+    id: 04537893554,
+    ime: "Jelena",
+    datumPrijave: "2025-05-26T17:36:22.035",
+  },
+  {
+    id: 6477889897,
+    ime: "Petar",
+    datumPrijave: "2025-05-26T17:36:22.035",
+  },
+];
+
+const niz4 = niz3.map(function IdBrojevi(element) {
+  return element.id;
+});
+console.log(niz4);
 
 // ZADATAK 3
 
-let y = 0;
-let brojac3 = 0;
-while (y < 100) {
-  y = y + 1;
-  if (y % 7 === 0) {
-    brojac3++;
-  }
-}
-console.log(brojac);
+const niz5 = [16, 4.6, 8, -10, 0, 1.5, 67];
+// PRIMER JEDAN
+
+const niz6 = niz5.map(function umanjivanje(x) {
+  return x / 2;
+});
+console.log(niz6);
+
+// PRIMER DVA
+
+const niz7 = niz5.map((x) => x / 2);
+console.log(niz7);
 
 // ZADATAK 4
-let niz2 = [];
-const niz1 = [
-  3,
-  "dusan",
-  7,
-  { ime: "lazar", starost: 25 },
-  "viktorija",
-  "",
-  { ime: "mika", starost: 60 },
-  -9,
-];
-for (i = 0; i < niz1.length; i++) {
-  if (typeof niz1[i] === "string") {
-    tekst = niz1[i].toUpperCase();
-    niz2.push(tekst);
-  } else if (typeof niz1[i] === "number") {
-    broj = niz1[i] * 2;
-    niz2.push(broj);
-  }
-}
-console.log(niz1[3].ime, niz1[6].ime, niz2);
 
-// // ZADATAK 5
-let brojac5 = 0;
-let x = 50;
-let nasumicanBroj5 = Math.floor(Math.random() * 10);
-while (x > 0) {
-  x = x - nasumicanBroj5;
-  nasumicanBroj5 = Math.floor(Math.random() * 10);
-  brojac5++;
-}
-console.log(brojac5);
+const niz8 = [
+  { ime: "Marko", godine: 16 },
+  { ime: "Slavica", godine: 19 },
+  { ime: "Zeljko", godine: 18 },
+  { ime: "Tina", godine: 17 },
+  { ime: "Petar", godine: 18 },
+  { ime: "Milca", godine: 19 },
+];
+const niz9 = niz8
+  .filter(function punoletni(element1) {
+    if (element1.godine > 17) return element1.godine;
+  })
+  .map(function samoImena(element1) {
+    return element1.ime;
+  });
+
+console.log(niz9);
