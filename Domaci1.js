@@ -1,22 +1,24 @@
-// ZADATAK 1
+// // ZADATAK 1
 
-const niz1 = ["Milan", "Mladen", "Vojin", "Darko", "Milica", "Vladimir"];
-const niz2 = niz1
-  // .map(function VelikoSlovoM(imaM) {
-  //   if (imaM.includes("m")) {
-  //     return imaM.toUpperCase();
-  //   }
-  //   return imaM;
-  // }) ----> prvo sam ovako ali mi se nije svidjalo sto mi Vladimira izlogjue sa velika slova
-  // pa sam se setio da mogu dva puta da pozovem funkciju .includes()  :)
-  .filter(function PrvoSLovoM(imaM) {
-    if (imaM.includes("M")) {
-      return imaM;
-    } else if (imaM.includes("m")) {
-      return imaM;
-    }
-  });
-console.log(niz2);
+// const niz1 = ["Milan", "Mladen", "Vojin", "Darko", "Milica", "Vladimir"];
+// const niz2 = niz1
+//   // .map(function VelikoSlovoM(imaM) {
+//   //   if (imaM.includes("m")) {
+//   //     return imaM.toUpperCase();
+//   //   }
+//   //   return imaM;
+//   // }) ----> prvo sam ovako ali mi se nije svidjalo sto mi Vladimira izlogjue sa velika slova
+//   // pa sam se setio da mogu dva puta da pozovem funkciju .includes()  :)
+//   .filter(function PrvoSLovoM(tekst) {
+//     if (tekst[0] === "M") {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   });
+// console.log(niz2);
+// let ime = "Stefan";
+// console.log(ime[0]);
 
 // // ZADATAK 2
 
