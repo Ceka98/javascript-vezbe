@@ -1,9 +1,9 @@
-// import { products } from "./products.js";
+import { products } from "./products.js";
 // //  Zadatak 1
 // const imena = ["dule", "erik", "saša", "maša", "aleks"];
-// const sifra = imena.reduce((PocetniNiz, PocetnoSlovo) => {
-//   return PocetniNiz + PocetnoSlovo[0].toUpperCase();
-// }, []); // "DESMA"
+// let sifra = imena.reduce((PocetniString, ime) => {
+//   return PocetniString + ime[0].toUpperCase();
+// }, ""); // "DESMA"
 // console.log(sifra);
 
 // Zadatak 2
@@ -40,7 +40,7 @@
 
 // Zadatak 4
 
-// const niz = ["Stefan", "Milena", "Jovica", "Anastasija", "Darko", "Jovana"];
+const niz = ["Stefan", "Milena", "Jovica", "Anastasija", "Darko", "Jovana"];
 // const niz1 = niz.sort((ime1, ime2) => {
 //   if (ime1.endsWith("a") > ime2.endsWith("a")) return -1;
 //   if (ime1.endsWith("a") < ime2.endsWith("a")) return 1;  .... prvi pokusaj
@@ -48,13 +48,11 @@
 // });
 // console.log(niz1);
 
-// const niz1 = niz
-//   .filter((ime) => {
-//     return ime.endsWith("a");
-//   })
-//   .sort((ime1, ime2) => {
-//     if (ime1 > ime2) return -1;
-//     if (ime1 < ime2) return 1;
-//     return 0;
-//   });
-// console.log(niz1);
+const niz1 = niz
+  .filter((ime) => ime.endsWith("a"))
+  .sort((ime1, ime2) => {
+    if (ime1 > ime2) return -1;
+    if (ime1 < ime2) return 1;
+    return 0;
+  });
+console.log(niz1);
