@@ -54,41 +54,18 @@
 
 // Zadatak 4
 
-// let osobe = [{ Kevin: 120 }, { Sophie: 20 }, { John: 672 }, { Mary: 245 }];
+// let osobe = [
+//   ["Kevin", 120],
+//   ["Sophie", 20],
+//   ["John", 672],
+//   ["Mary", 245],
+// ];
 
 // function nasumicniBroj() {
 //   return Math.floor(Math.random() * 100);
 // }
 
-// let podaci = osobe.reduce((konacniPodaci, objekat) => {
-//   return [
-//     ...konacniPodaci,
-//     "ID:" +
-//       nasumicniBroj() +
-//       "  " +
-//       "Name: " +
-//       Object.keys(objekat) +
-//       "  " +
-//       "Steps:" +
-//       Object.values(objekat),
-//   ];
+// let podaci = osobe.reduce((konacniNiz, niz) => {
+//   return [...konacniNiz, { id: nasumicniBroj(), Name: niz[0], Steps: niz[1] }];
 // }, []);
-// console.log(podaci);
-
-// let podaci = osobe.reduce((konacniNiz, pocetniPodaci) => {
-//   return ` ID: ${nasumicniBroj()} Name: ${Object.keys(
-//     pocetniPodaci
-//   )} Steps: ${Object.values(pocetniPodaci)} `;
-// }, []);
-// console.log(podaci);
-
-// let podaci = osobe
-//   .reduce((FinalniNiz, poceniObjekat) => {
-//     return [...FinalniNiz, poceniObjekat];
-//   }, [])
-//   .map((poceniObjekat) => {
-//     return `{ ID: ${nasumicniBroj()}  Name: ${Object.keys(
-//       poceniObjekat
-//     )}  Steps: ${Object.values(poceniObjekat)} }`;
-//   });
 // console.log(podaci);
