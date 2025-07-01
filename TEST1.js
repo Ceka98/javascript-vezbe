@@ -2,121 +2,82 @@ import { proizvodi } from "./proizvodi.js";
 import { ocene } from "./ocene.js";
 import { zaposleni } from "./zaposleni.js";
 
-// let formatiraniProizvodi = proizvodi.reduce((noviProizvod, pocetniProizvod) => {
-//   return [
-//     ...noviProizvod,
-//     [pocetniProizvod.title, pocetniProizvod.price, pocetniProizvod.stock],
-//   ];
-// }, []);                   treba da bude funkcija!!!!
-// // console.log(formatiraniProizvodi);
 // ZADATAK 1
 
-// let nizid = proizvodi.filter((proizvod49) => {
-//   return proizvod49.id === 49;
-// });
-// let stockManjeOdDeset = proizvodi.filter((proizvodistock) => {
-//   return proizvodistock.stock < 10;
-// });
-// let namirnice = proizvodi.filter((namirnica) => {
-//   return namirnica.category === "groceries" && namirnica.stock > 10;
-// });
-
-// let izvestaj = [...nizid, ...namirnice, ...stockManjeOdDeset];
-
-// let konacniIzvestaj = izvestaj.map(formatirajProizvod);
-
-// function formatirajProizvod(proizvod) {
+// function formatiraj(proizvod) {
 //   return `${proizvod.title} ($${proizvod.price} x ${proizvod.stock})`;
 // }
-// console.log(konacniIzvestaj);
+
+// // a)
+
+// let proizvodID = proizvodi.filter((proizvod) => {
+//   return proizvod.id === 49;
+// });
+// let izvestajProizvoda49 = proizvodID.map(formatiraj);
+// console.log(izvestajProizvoda49);
+
+// b)
+
+// let proizvodiZaTrebovanje = proizvodi.filter((proizvod) => {
+//   return proizvod.stock < 10;
+// });
+// let izvestajTrebovanja = proizvodiZaTrebovanje.map(formatiraj);
+// console.log(izvestajTrebovanja);
+
+// c)
+
+// let skupeNamirnice = proizvodi.filter((proizvod) => {
+//   return proizvod.category === "groceries" && proizvod.price > 10;
+// });
+
+// let izvestaj = skupeNamirnice.map(formatiraj);
+// console.log(
+//   `${izvestaj} Ukupno ima ${izvestaj.length} namirnica sa cenom preko $10`
+// );
 
 // ZADATAK 2
 
+// a)
+
 // for (let i = 0; i < ocene.length; i++) {
-//   let endswithyahoo = ocene[i].reviewerEmail.includes("yahoo");
-//   if (endswithyahoo === true) {
+//   let email = ocene[i].reviewerEmail.includes("yahoo");
+//   if (email === true) {
 //     console.log(ocene[i].reviewerName);
 //     break;
 //   }
 // }
 
-// for (let i = 0; i < ocene.length; i++) {
-//   let stareOcene = ocene[i].date.includes("2024");
-//   if (stareOcene === true) console.log(ocene[i].rating);
-// }
+// b)
 
-// let ukupnaZarada = proizvodi.reduce((konacniZbir, proizvod) => {
-//   return konacniZbir + proizvod.price;
-// }, 0);
-// console.log(ukupnaZarada);
-// let prosecnaZarada = ukupnaZarada / proizvodi.length;
-// console.log(prosecnaZarada);
-
-// for (let i = 0; i < ocene.length; i++) {
-//   let NajmanjeOcene = ocene[i].rating === 1;
-//   if (NajmanjeOcene === true)
-//     console.log(`${ocene[i].reviewerName} (${ocene[i].reviewerEmail})`);
-// }
-
-//  ZADATAK 3
-
-// let niz1 = [
-//   "APPLE",
-//   150,
-//   "PERFUME",
-//   "BREAD",
-//   -17.99,
-//   "EGG",
-//   "JUICE",
-//   0,
-//   "ICE CREAM",
-// ];
-// let niz2 = niz1.filter((element) => {
-//   if (typeof element === "string") {
-//     return element;
-//   }
+// let ProslogodisnjeOcene = ocene.filter((osobe) => {
+//   return osobe.date.startsWith("2024");
 // });
-// function nasumicniBroj() {
-//   return Math.floor(Math.random() * 100);
+// console.log(ProslogodisnjeOcene);
+
+// c)
+
+// let vrednostProizvoda = proizvodi.reduce((pocetniBroj, proizvod) => {
+//   return pocetniBroj + proizvod.price * proizvod.stock;
+// }, 0);
+// console.log(vrednostProizvoda);
+
+// d)
+
+// let prosecnaCenaProizvoda = proizvodi.reduce((pocetniBroj, proizvod) => {
+//   return pocetniBroj + proizvod.price / proizvodi.length;
+// }, 0);
+// console.log(prosecnaCenaProizvoda);
+
+// e)
+
+// function formatirajOcenjivace(osoba) {
+//   return `${osoba.reviewerName} (${osoba.reviewerEmail})`;
 // }
-// let niz3 = niz2.reduce((Objekat, element) => {
-//   let vrednost;
-//   let x = nasumicniBroj();
-//   if (x % 3 === 0) {
-//     vrednost = x;
-//   } else {
-//     vrednost = element.toLocaleLowerCase();
-//   }
-//   return { ...Objekat, [element]: vrednost };
-// }, {});
-// console.log(niz3);
 
-// Zadatak 4
+// let losiOcenjivaci = ocene.filter((osoba) => {
+//   return osoba.rating === 1;
+// });
+// console.log(losiOcenjivaci);
 
-let spisakZaposlenih = [
-  {
-    id: 31,
-    firstName: "Allie",
-    lastName: "Clarks",
-    gender: "female",
-    age: 27,
-    email: "alliescat@gmail.com",
-    role: "user",
-  },
-  ...zaposleni,
-  {
-    id: 32,
-    firstName: "Johnathan",
-    lastName: "Silver",
-    gender: "male",
-    age: 31,
-    email: "silver.johnathon@yahoo.com",
-    role: "moderator",
-  },
-];
-
-let formatSviZaposleni = spisakZaposlenih.sort((elementA, elementB) => {
-  if (elementA.age > elementB.age) return 1;
-  if (elementA.age < elementB.age) return -1;
-});
-console.log(formatSviZaposleni);
+// let izvestaj = losiOcenjivaci.map(formatirajOcenjivace);
+// console.log(izvestaj);
