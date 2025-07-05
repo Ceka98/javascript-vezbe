@@ -10,11 +10,9 @@ function formatiraj(proizvod) {
 
 // // a)
 
-// let proizvodID = proizvodi
-//   .filter((proizvod) => {
-//     return proizvod.id === 49;
-//   })
-//   .map(formatiraj);
+// let proizvodID = proizvodi.find((proizvod) => {
+//   return proizvod.id === 49;
+// });
 // console.log(proizvodID);
 
 // b)
@@ -42,7 +40,7 @@ function formatiraj(proizvod) {
 // a)
 
 // for (let i = 0; i < ocene.length; i++) {
-//   let email = ocene[i].reviewerEmail.includes("yahoo");
+//   let email = ocene[i].reviewerEmail.endsWith("yahoo.com");
 //   if (email === true) {
 //     console.log(ocene[i].reviewerName);
 //     break;
@@ -148,4 +146,4 @@ function formatiraj(proizvod) {
 //     if (osobaA.age > osobaB.age) return 1;
 //     if (osobaA.age < osobaB.age) return -1;
 //   });
-// console.log(noviClanovi);
+// console.log(noviClanovi.length);
