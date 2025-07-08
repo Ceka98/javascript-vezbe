@@ -81,7 +81,13 @@ function stampajProdavca(prodavac) {
 // let jeftineTezge = tezge.filter((tezga) => {
 //   if (tezga.imeTezge.includes("JEFTINO")) return tezga;
 // });
-// console.log(jeftineTezge);
+// // console.log(jeftineTezge);
+
+// let tezgeSaProdavcima = jeftineTezge.map((tezga) => {
+//   let prodavac = prodavci.find((p) => p.ime === tezga.imeProdavca);
+//   return { ...tezga, prodavac: prodavac, jeftino: true };
+// });
+// console.log(tezgeSaProdavcima);
 
 // b) Svakoj tezgi iz prethodnog koraka dodaj informacije o njenom prodavcu
 
