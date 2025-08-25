@@ -138,7 +138,7 @@
 //   }
 //   let dijagonala = 0;
 //   for (let i = 0; i < matrica.length; i++) {
-//     dijagonala = matrica[i][i] + matrica[i][i];
+//     dijagonala = dijagonala + matrica[i][i];
 //   }
 //   return dijagonala;
 // }
@@ -147,6 +147,7 @@
 // PETI ZADATAK
 // Napravi 3x3 matricu i napuni je nasumičnim brojevima od 1 do 100.
 // Odštampaj prvo celu matricu, a zatim i zbir svih njenih elemenata.
+
 // function nasumicniBroj() {
 //   return Math.floor(Math.random() * 100);
 // }
@@ -177,6 +178,35 @@
 // Napiši funkciju koja radi transpoziciju matrice.
 // Transpozicija matrica je operacija gde redovi matrice postaju kolone, a kolone redovi
 
+// function transpozicijaMatrice(matrica) {
+//   let novaMatrica = [];
+//   let brojRedova = matrica.length;
+//   let brojKolona = matrica[0].length;
+
+//   for (let j = 0; j < brojKolona; j++) {
+//     let noviRed = [];
+//     for (let i = 0; i < brojRedova; i++) {
+//       let broj = matrica[i][j];
+//       noviRed.push(broj);
+//     }
+//     novaMatrica.push(noviRed);
+//   }
+//   return novaMatrica;
+// }
+// let matrica2 = [
+//   [4, 2, 0, 10],
+//   [18, 12, 0, 5],
+//   [1, 6, 9, 33],
+//   [8, 10, 6, 25],
+// ];
+
+// let matrica0 = [
+//   ["a", "b", "c"],
+//   ["d", "e", "f"],
+// ];
+
+// console.log(transpozicijaMatrice(matrica2));
+
 // DOPUNA DOMACEG
 
 // PRVI ZADATAK
@@ -189,7 +219,7 @@
 //   let link = "https://www.google.com?q=";
 //   let niz = [link, niz3];
 //   let konacniLink;
-//   konacniLink = niz.join("");
+//   konacniLink = niz.join("").toLocaleLowerCase();
 //   return konacniLink;
 // }
 
@@ -197,19 +227,19 @@
 
 // DRUGI ZADATAK
 
-const razno = [10, -5, "a", -7, 25, "-d", "bojler", 0, "šolja"];
+const razno = [10, -5, "a", -7, 25, "d", "bojler", 0, "šolja"];
 
 // a)
 
-// for (let i = 0; i < razno.length; i++) {
-//   if (typeof razno[i] === "string") {
-//     console.log(razno[i]);
-//     break;
+// let prviString = razno.filter((element) => {
+//   if (typeof element === "object") {
+//     return element;
 //   }
-// }
+// });
+// console.log(prviString);
 
 // b)
-// let noviNiz = razno.slice(2, 5 + 1);
+// let noviNiz = razno.slice(2, 6);
 // console.log(noviNiz);
 
 // c)
@@ -264,9 +294,47 @@ const razno = [10, -5, "a", -7, 25, "-d", "bojler", 0, "šolja"];
 //   "/src/api/route.ts",
 //   "C:/Filmovi/Kad utihnu jaganjci.mp4",
 // ];
+// function getFileName(fajl) {
+//   let string = fajl.map((element) => {
+//     let delovi = element.split("/");
+//     return delovi;
+//   });
 
-// function getFileName(file) {
-//  file.split('/')
-
+//   let rezultat = string.map((niz) => {
+//     let imeFajla = niz.length - 1;
+//     return niz[imeFajla];
+//   });
+//   return rezultat;
 // }
-// console.log(getFileName(fajlovi));
+// // console.log(getFileName(fajlovi));
+
+// function getFileExtension(fajl) {
+//   let string = fajl.map((element) => {
+//     let delovi = element.split(".");
+//     return delovi;
+//   });
+
+//   let rezultat = string.map((niz) => {
+//     let imeFajla = niz.length - 1;
+//     return niz[imeFajla];
+//   });
+//   return rezultat;
+// }
+// console.log(getFileExtension(fajlovi));
+
+// PETI ZADATAK
+
+// const imena1 = ["Mika", "Žika", "Pera"];
+// const imena2 = ["Savka"];
+// const imena3 = ["Goran Milosavljević", "Milena Grajić"];
+
+// function spojiImena(imena) {
+//   if (imena.length === 0) return imena;
+//   if (imena.length === 1) return imena[0];
+//   if (imena.length === 2) return imena.join(" i ");
+//   let poslednjeIme = imena.length - 1;
+
+//   return imena.slice(0, -1).join(", ") + " i " + imena[poslednjeIme];
+// }
+
+// console.log(spojiImena(imena1));
