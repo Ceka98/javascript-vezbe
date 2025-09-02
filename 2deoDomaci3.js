@@ -11,6 +11,19 @@
 //   "Joel Embiid": "55.22 million USD",
 // };
 
+// Primer a
+
+// let igraciInfo = Object.entries(igraci);
+// let igraciZarada = igraciInfo.reduce((rezultat, entryes) => {
+//   let imeIgraca = entryes[0];
+//   let zaradaIgraca = entryes[1];
+//   let konacniRezultat = rezultat + ` ${imeIgraca} === ${zaradaIgraca}, `;
+//   return konacniRezultat;
+// }, "");
+// console.log(igraciZarada);
+
+// Primer b
+
 // let imenaIgraca = Object.keys(igraci);
 // let zaradeIgraca = Object.values(igraci);
 
@@ -82,23 +95,79 @@
 // Transformiši sledeći objekat tako što ćeš proveriti svaku njegovu vrednost.
 //  Ako je vrednost objekat, pretvori ga u broj njegovih ključeva. Ako nije objekat, obriši ga.
 
-const firma = {
-  id: 120,
-  ime: "Yura",
-  brojZaposlenih: 1354,
-  lokacija: {
-    id: 33,
-    ime: "Niš",
-  },
-  brojOtpustenih: 45,
-  datumZacetka: new Date(2020, 4, 5),
-  vlasnik: {
-    ime: "Dragoslav",
-    prezime: "Stanisavljević",
-    datumRodjenja: new Date(1965, 8, 10),
-    datumZaposljenja: new Date(2020, 4, 5),
-    plata: 410000,
-    valutaPlate: "RSD",
-  },
-  statistika: {},
-};
+// const firma = {
+//   id: 120,
+//   ime: "Yura",
+//   brojZaposlenih: 1354,
+//   lokacija: {
+//     id: 33,
+//     ime: "Niš",
+//   },
+//   brojOtpustenih: 45,
+//   datumZacetka: new Date(2020, 4, 5),
+//   vlasnik: {
+//     ime: "Dragoslav",
+//     prezime: "Stanisavljević",
+//     datumRodjenja: new Date(1965, 8, 10),
+//     datumZaposljenja: new Date(2020, 4, 5),
+//     plata: 410000,
+//     valutaPlate: "RSD",
+//   },
+//   statistika: {},
+// };
+
+// let unos = Object.entries(firma);
+
+// let noviObjekat = unos.reduce((objekat, niz) => {
+//   let kljucevi = niz[0];
+//   let vrednosti = niz[1];
+
+//   if (typeof vrednosti === "object") {
+//     return { ...objekat, [kljucevi]: Object.keys(vrednosti).length };
+//   }
+//   return objekat;
+// }, {});
+// console.log(noviObjekat);
+
+// CETVRTI ZADATAK
+// Napravi kopije sledećih promenljivih. Proveri da li je kopija ispravna tako što ćeš da:
+
+// - napraviš kopiju,
+// - izmeniš kopiju u neku proizvoljnu vrednost,
+// - izloguješ u konzoli original i kopiju da vidiš njihove vrednosti.
+
+// Ukoliko je original ostao nepromenjen, onda je kopija ispravna.
+// Uradi ovo za svaki od primera:
+
+// const broj = 7;
+// let noviBroj = broj + 1;
+// console.log(broj, noviBroj);
+
+// let recenica = "Idem na more.";
+// let novaRecenica = recenica + " Bice prelepo leto.";
+// console.log(recenica, novaRecenica);
+
+// const rezultatTesta = {
+//   uspesnoPolozen: true,
+//   datumPolaganja: new Date(2025, 7, 27),
+//   datumZalbe: null,
+//   brojPoena: 25,
+// };
+// let noviObjekat = { ...rezultatTesta, brojNegativnihPoena: 5 };
+// console.log(rezultatTesta, noviObjekat);
+
+// const opstina = {
+//   id: 788,
+//   lokacija: {
+//     ime: "Leskovac",
+//   },
+//   brojZaposlenih: 133,
+// };
+
+// let noveInfoOpstina = {
+//   ...opstina,
+//   id: 234,
+//   lokacija: { ime: "Nis" },
+//   brojZaposlenih: 525,
+// };
+// console.log(opstina, noveInfoOpstina);
