@@ -171,3 +171,25 @@
 //   brojZaposlenih: 525,
 // };
 // console.log(opstina, noveInfoOpstina);
+
+// const igraci = {
+//   "Jayson Tatum": "54.13 million USD",
+//   "Giannis Antetokounmpo": "54.13 million USD",
+//   "Luka Dončić": "46 million USD",
+//   "Kevin Durant": "53.28 million USD",
+//   "LeBron James": "52.63 million USD",
+//   "Shai Gilgeous-Alexander": "38.33 million USD",
+//   "Anthony Edwards": "45.55 million USD",
+//   "Joel Embiid": "55.22 million USD",
+// };
+
+// let imenaIgraca = Object.keys(igraci);
+// let zaradeIgraca = Object.values(igraci);
+
+// let redovi = Object.entries(igraci);
+
+// for (let i = 0; i < redovi.length; i++) {
+//   let ime = redovi[i][0];
+//   let zarada = redovi[i][1];
+//   console.log(`${ime} ==== ${zarada}`);
+// }
