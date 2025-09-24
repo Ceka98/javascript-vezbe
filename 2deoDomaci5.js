@@ -256,4 +256,3 @@ B.dodajKnjigu(k3);
 B.prikazKnjiga();
 
 console.log("Ukupan broj knjiga:", Biblioteka.ukpuniBrojKnjiga);
-console.log("Broj dostupnih knjiga:", Biblioteka.brojDostupnihKnjiga);
