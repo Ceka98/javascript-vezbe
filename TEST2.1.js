@@ -1,4 +1,5 @@
-// import { songData } from "./songsData.js";
+import { songData } from "./songsData.js";
+import { departments } from "./departments.js";
 
 // PRVI ZADATAK
 
@@ -26,6 +27,9 @@
 
 //   tagsToCSV(songId, separator) {
 //     let pesma = this.playlist.find((pesma) => pesma.id === songId);
+//     if (!pesma) {
+//       return "Greska, ta pesma ne postoji na ovoj pley listi";
+//     }
 //     let odvojiTags = pesma.tags.split(",");
 //     return odvojiTags.join(separator);
 //   }
@@ -45,7 +49,7 @@
 //   console.log(test1.getTags("Bohemian Rhapsody"));
 //   console.log(test1.findFirstSongByArtist("Queen"));
 //   console.log(test1.tagsToCSV("1", "*"));
-//   console.log(test1.getWindow(1, 0));
+//   console.log(test1.getWindow(1, 3));
 // } catch (greska) {
 //   console.log(greska);
 // }
@@ -58,9 +62,21 @@
 //   ["O", "X", "X"],
 // ];
 
+// const matrica2 = [
+//   ["O", "O", "O"],
+//   ["X", "X", "X"],
+//   ["O", "O", "X"],
+// ];
+
+// const matrica3 = [
+//   ["O", "X", "O"],
+//   ["X", "X", "O"],
+//   ["X", "O", "O"],
+// ];
+
 // function daLiJeIgraGotova(matrica, X) {
 //   let glavnaDijagonala = true;
-//   for (i = 0; i < matrica.length; i++) {
+//   for (let i = 0; i < matrica.length; i++) {
 //     if (matrica[i][i] !== X) {
 //       glavnaDijagonala = false;
 //     }
@@ -68,7 +84,7 @@
 //   if (glavnaDijagonala) return true;
 
 //   let sporednaDijagonla = true;
-//   for (i = 0; i < matrica.length; i++) {
+//   for (let i = 0; i < matrica.length; i++) {
 //     if (matrica[i][matrica.length - 1 - i] !== X) {
 //       sporednaDijagonla = false;
 //     }
@@ -98,8 +114,8 @@
 //   return false;
 // }
 
-// console.log(daLiJeIgraGotova(matrica1, "X"));
-// console.log(daLiJeIgraGotova(matrica1, "O"));
+// console.log(daLiJeIgraGotova(matrica3, "X"));
+// console.log(daLiJeIgraGotova(matrica3, "O"));
 
 // TREVI ZADATAK
 
@@ -111,7 +127,7 @@
 
 //   constructor(imeVlasnikaRacuna) {
 //     this.imeVlasnikaRacuna = imeVlasnikaRacuna;
-//     this.ID = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+//     this.ID = Math.floor(Math.random() * 899999) + 100000;
 //     this.#sumaNovca = 0;
 //   }
 
@@ -134,8 +150,8 @@
 //   }
 
 //   static transfer(from, to, amount) {
-//     from.setSumaNovca(from.getSumaNovca() - amount);
-//     to.setSumaNovca(to.getSumaNovca() + amount);
+//     from.withdraw(amount);
+//     to.deposit(amount);
 //   }
 // }
 
@@ -196,3 +212,175 @@
 // console.log(
 //   "Stanje na vasem racunu nakon transvera novca" + " " + racun2.getSumaNovca()
 // );
+// try {
+//   racun2.withdraw(1001);
+// } catch (error) {
+//   console.log(error);
+// }
+// CETVRTI ZADATAK
+
+// a) getDepartments()
+// ova f-ja vraća niz svih departmana ID sektora (frontend, backend, devops…)
+
+// function getDepartments() {
+//   return Object.keys(departments);
+// }
+// console.log(getDepartments());
+
+// b) getEmployees(departmentName)
+// ova f-ja vraća niz imena zaposlenih iz zadatog departmana
+// primer:
+// 	getEmployees(“devops”);
+// ["Cohen Lynn", "Kirsten Jordan", "Duran Hendrix"]
+
+// function getEmployees(departmentName) {
+//   let departman = departments[departmentName];
+//   if (!departman) {
+//     throw "Greska to odeljenje ne postoji";
+//   }
+//   let zaposleni = [];
+//   if (departman.lead) {
+//     zaposleni.push(departman.lead.name);
+//   }
+//   let clanovi = Object.values(departman.members);
+//   clanovi.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen.name);
+//   });
+//   return zaposleni;
+// }
+
+// console.log(getEmployees("frontend"));
+
+// function getAllEmployees() {
+//   let departman1 = departments.frontend;
+
+//   let zaposleni = [];
+//   if (departman1.lead) {
+//     zaposleni.push(departman1.lead.name);
+//   }
+//   let clanoviFrondenda = Object.values(departman1.members);
+//   clanoviFrondenda.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen.name);
+//   });
+
+//   let departman2 = departments.backend;
+
+//   if (departman2.lead) {
+//     zaposleni.push(departman2.lead.name);
+//   }
+//   let clanoviBackenda = Object.values(departman2.members);
+//   clanoviBackenda.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen.name);
+//   });
+
+//   let departman3 = departments.devops;
+
+//   if (departman3.lead) {
+//     zaposleni.push(departman3.lead.name);
+//   }
+//   let clanoviDevopsa = Object.values(departman3.members);
+//   clanoviDevopsa.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen.name);
+//   });
+
+//   let departman4 = departments.sales;
+
+//   if (departman4.lead) {
+//     zaposleni.push(departman4.lead.name);
+//   }
+//   let clanoviSalesa = Object.values(departman4.members);
+//   clanoviSalesa.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen.name);
+//   });
+
+//   let departman5 = departments.hr;
+
+//   if (departman5.lead) {
+//     zaposleni.push(departman5.lead.name);
+//   }
+//   let clanoviHra = Object.values(departman5.members);
+//   clanoviHra.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen.name);
+//   });
+
+//   return zaposleni;
+// }
+
+// console.log(getAllEmployees());
+
+// function getTeamLead(departmentName) {
+//   let departman = departments[departmentName];
+//   if (!departman) {
+//     throw "Greska to odeljenje ne postoji";
+//   }
+
+//   return departman.lead.name || null;
+// }
+
+// console.log(getTeamLead("frontend"));
+
+// function promoteEmployees(threshold, raisePercentage) {
+//   let departman1 = departments.frontend;
+
+//   let zaposleni = [];
+//   if (departman1.lead) {
+//     zaposleni.push(departman1.lead);
+//   }
+//   let clanoviFrondenda = Object.values(departman1.members);
+//   clanoviFrondenda.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen);
+//   });
+
+//   let departman2 = departments.backend;
+
+//   if (departman2.lead) {
+//     zaposleni.push(departman2.lead);
+//   }
+//   let clanoviBackenda = Object.values(departman2.members);
+//   clanoviBackenda.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen);
+//   });
+
+//   let departman3 = departments.devops;
+
+//   if (departman3.lead) {
+//     zaposleni.push(departman3.lead);
+//   }
+//   let clanoviDevopsa = Object.values(departman3.members);
+//   clanoviDevopsa.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen);
+//   });
+
+//   let departman4 = departments.sales;
+
+//   if (departman4.lead) {
+//     zaposleni.push(departman4.lead);
+//   }
+//   let clanoviSalesa = Object.values(departman4.members);
+//   clanoviSalesa.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen);
+//   });
+
+//   let departman5 = departments.hr;
+
+//   if (departman5.lead) {
+//     zaposleni.push(departman5.lead);
+//   }
+//   let clanoviHra = Object.values(departman5.members);
+//   clanoviHra.forEach((zaposlen) => {
+//     zaposleni.push(zaposlen);
+//   });
+
+//   for (let i = 0; i < zaposleni.length; i++) {
+//     let radnik = zaposleni[i];
+//     if (threshold > radnik.salary) {
+//       radnik.salary = radnik.salary + (radnik.salary * raisePercentage) / 100;
+//     }
+//   }
+
+//   return zaposleni;
+// }
+
+// console.log(promoteEmployees());
+
+// console.log(promoteEmployees(400000, 10));
