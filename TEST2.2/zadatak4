@@ -1,0 +1,15 @@
+class File {
+  getPathType(tipPodatka) {
+    if (tipPodatka.startsWith("C")) {
+      return "absolute";
+    } else if (tipPodatka.startsWith(".")) {
+      return "relative";
+    }
+  }
+
+  getExtension(file) {
+    let niz = file.split(".");
+    let podatak = niz[1];
+    return podatak;
+  }
+}

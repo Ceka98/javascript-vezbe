@@ -1,0 +1,97 @@
+class Bioskop {
+  imeFilma;
+  brojReda;
+  brojKolona;
+  sedista = [];
+
+  constructor(imeFilma, brojReda, brojKolona) {
+    this.imeFilma = imeFilma;
+    this.brojReda = brojReda;
+    this.brojKolona = brojKolona;
+    for (let i = 1; i <= brojReda; i++) {
+      let noviRed = [];
+      for (let j = 0; j < brojKolona; j++) {
+        let zauzetoSediste = { z: false };
+        noviRed.push(zauzetoSediste);
+      }
+      this.sedista.push(noviRed);
+    }
+  }
+
+  zauzmiSediste(imeOsobe, prezimeOsobe, brojReda, brojKolona) {
+    if (brojReda > this.brojReda.length || brojReda < this.brojReda.length) {
+      return "Nemamo taj red";
+    }
+    if (
+      brojKolona > this.brojKolona.length ||
+      brojKolona < this.brojKolona.length
+    ) {
+      return "Nemamo tu kolonu ";
+    }
+    let sediste = this.sedista[brojReda - 1][brojKolona - 1];
+    if (sediste.z === false) {
+      this.sedista[brojReda - 1][brojKolona - 1] = {
+        z: true,
+        i: imeOsobe,
+        p: prezimeOsobe,
+      };
+      return "Uspesno ste zauzli mesto ";
+    } else {
+      return "Nažalost ovo mesto je već zauzeto";
+    }
+  }
+
+  prikaziSedista() {
+    for (let i = 0; i < this.sedista.length; i++) {
+      for (let j = 0; j < this.sedista[i].length; j++) {
+        if (this.sedista[i][j].z === false) {
+          this.sedista[i][j] = {};
+        } else {
+          this.sedista[i][
+            j
+          ] = `${this.sedista[i][j].i[0]}${this.sedista[i][j].p[0]}`;
+        }
+      }
+    }
+    return this.sedista;
+  }
+  prikaziStatistiku() {
+    let ukupanBrojSedista = this.brojKolona * this.brojReda;
+
+    let brojZauzetihMesta = 0;
+    let brojSlobodnihMesta = 0;
+
+    for (let i = 0; i < this.sedista.length; i++) {
+      for (let j = 0; j < this.sedista[i].length; j++) {
+        if (this.sedista[i][j].z === true) {
+          brojZauzetihMesta++;
+        } else {
+          brojSlobodnihMesta++;
+        }
+      }
+    }
+    return `Ukupan broj sedišta: ${ukupanBrojSedista}
+Broj zauzetih sedišta: ${brojZauzetihMesta}
+Broj slobodnih sedišta: ${brojSlobodnihMesta}`;
+  }
+
+  daLiJeBioskopPun() {
+    for (let i = 0; i < this.sedista.length; i++) {
+      for (let j = 0; j < this.sedista[i].length; j++) {
+        if (this.sedista[i][j].z === false) {
+          return "Jos uvek ima slobodnih mesta";
+        } else {
+          `Sva mesta u sali su popunjena `;
+        }
+      }
+    }
+  }
+}
+
+let stefan = new Bioskop("Stvarno strasno", 5, 4);
+console.log(stefan.zauzmiSediste("Stefan", "Cekic", 2, 2));
+console.log(stefan.zauzmiSediste("Dusan", "Dodic", 1, 2));
+// console.log(stefan.sedista);
+// console.log(stefan.prikaziSedista());
+console.log(stefan.prikaziStatistiku());
+console.log(stefan.daLiJeBioskopPun());

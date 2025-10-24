@@ -1,0 +1,55 @@
+import { rawShipmentData } from "./shipments.js";
+
+class TemuShipment {
+  rawData;
+  parsedData;
+
+  constructor(Data) {
+    this.rawData = Data;
+    this.parseRawData(this.rawData);
+  }
+
+  parseRawData(podaci) {
+    let prvaPodelaPodataka = podaci.split("\n");
+    let drugaPodelaPodataka = prvaPodelaPodataka.map((podatak) =>
+      podatak.split("|")
+    );
+    this.parsedData = drugaPodelaPodataka;
+  }
+
+  findUrgentShipment() {
+    // f-ja koja pronalazi i vraća prvu dostavu koja je urgentna (HIGH_URGENCY) i koja još uvek nike otpremljena (AWAITING_DISPATCH)
+    let hitnaDostavaNaCekanju = this.parsedData.find((posiljka) => {
+      if (posiljka[1] === "HIGH_URGENCY" && posiljka[2] === "AWAITING_DISPATCH")
+        return true;
+    });
+    return hitnaDostavaNaCekanju;
+  }
+  // popAllUrgentShipments() {}  Nisam znao da odradim ovu funkciju
+
+  exportToCSV(Data) {
+    let dokument1 = Data.join(";");
+    let dokument2 = dokument1.split("_");
+    let dokument3 = dokument2.join(",");
+    let dokument4 = dokument3.split("-");
+    let dokument5 = dokument4.join(",");
+    let dodatak = [
+      "ID",
+      "Priority",
+      "Status",
+      "Destination",
+      "Estimated Dispatch",
+      "Date",
+    ];
+    let dodatak2 = dodatak.join(",");
+
+    let rezultat = dodatak2 + dokument5;
+    return rezultat;
+  }
+}
+
+let posiljka = new TemuShipment(rawShipmentData);
+// let noviPodaci = rawShipmentData.split("/n");
+console.log(posiljka.parsedData);
+console.log(posiljka.findUrgentShipment());
+console.log(posiljka.exportToCSV(posiljka.parsedData));

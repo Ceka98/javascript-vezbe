@@ -1,0 +1,66 @@
+class ZagadjenaZona {
+  zagadjenaZona = [];
+  red = 30;
+  kolona = 30;
+
+  constructor() {
+    for (let i = 0; i < this.red; i++) {
+      let noviRed = [];
+      for (let j = 0; j < this.kolona; j++) {
+        let vrednost = 0;
+        noviRed.push(vrednost);
+      }
+      this.zagadjenaZona.push(noviRed);
+    }
+  }
+
+  zagadjenoPolje(x, y, opasnost) {
+    if (x < 0 || x > this.red) {
+      return "Greska nemamo to polje";
+    }
+    if (y < 0 || y > this.kolona) {
+      return "Greska nemamo to polje";
+    }
+    this.zagadjenaZona[x][y] = opasnost;
+
+    // Nisam znao da promenim polja oko opasnosto na 1
+
+    opasnost = {
+      tip: ["hemijska", "bioloska"],
+      stepen: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      poluprecnikOpasnosti: [1, 2, 3],
+    };
+    return this.zagadjenaZona[x][y];
+  }
+
+  nadjiOpasnostiPoTipu(tipOpasnosti) {
+    let rezultat = [];
+    for (let i = 0; i < this.zagadjenaZona.length; i++) {
+      for (let j = 0; j < this.zagadjenaZona[i].length; j++) {
+        if (this.zagadjenaZona[i][j].tip === tipOpasnosti) {
+          rezultat.push(this.zagadjenaZona[i][j]);
+        }
+      }
+    }
+    return rezultat;
+  }
+
+  nadjiJakoOpasnaPolja() {
+    let rezultat = [];
+    for (let i = 0; i < this.zagadjenaZona.length; i++) {
+      for (let j = 0; j < this.zagadjenaZona[i].length; j++) {
+        if (this.zagadjenaZona[i][j].stepen > 8) {
+          rezultat.push([i, j]);
+        }
+      }
+    }
+    return rezultat;
+  }
+}
+
+let zona = new ZagadjenaZona();
+console.log(zona.zagadjenaZona);
+const opasnost = { tip: "hemijska", stepen: 9, poluprecnik: 2 };
+console.log(zona.zagadjenoPolje(2, 2, opasnost));
+console.log(zona.nadjiOpasnostiPoTipu("hemijska"));
+console.log(zona.nadjiJakoOpasnaPolja());
